@@ -1,3 +1,4 @@
 # jt808
 
-init
+init, JT808 
+

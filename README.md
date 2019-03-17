@@ -1,4 +1,4 @@
 # jt808
 
-init, JT808 
+JT808 Golang 实现
 

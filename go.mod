@@ -1,3 +1,3 @@
-module github.com/it512/jt808
+module github.com/elliot-gawthrop/jt808
 
 go 1.12

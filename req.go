@@ -13,6 +13,9 @@ type MsgHead struct {
 	Mux        bool
 
 	PhoneNoBCD []byte
+
+	TotalNumberPackets uint16
+	PacketSerialNumber uint16
 }
 
 type LocMsg struct {
@@ -89,7 +92,13 @@ func DecodeMsgHead(bd *BufDecoder) (*MsgHead, error) {
 	head.Mux = (head.Property & MsgHeadMuxMask) != 0
 
 	if head.Mux {
-		return nil, ErrNotSupport
+		if head.TotalNumberPackets, err = bd.Uint16(); err != nil {
+			return nil, err
+		}
+
+		if head.PacketSerialNumber, err = bd.Uint16(); err != nil {
+			return nil, err
+		}
 	}
 
 	return head, nil
